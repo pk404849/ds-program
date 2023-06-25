@@ -31,6 +31,8 @@ public class SinglyLinkedListImpl {
 		if(list.head != null) {
 			Node current = list.head;
 			
+			
+			
 			while(current != null) {
 				System.out.print(current.data+" ");
 				current = current.next;
