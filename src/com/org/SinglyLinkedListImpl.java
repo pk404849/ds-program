@@ -26,32 +26,30 @@ public class SinglyLinkedListImpl {
 			current.next = newNode;
 		}
 	}
-	
+
 	public void displayList(SinglyLinkedListImpl list) {
-		if(list.head != null) {
+		if (list.head != null) {
 			Node current = list.head;
-			
-			
-			
-			while(current != null) {
-				System.out.print(current.data+" ");
+
+			while (current != null) {
+				System.out.print(current.data + " ");
 				current = current.next;
 			}
 			System.out.println();
 		}
 	}
-	
+
 	public void insertBeginning(int data, SinglyLinkedListImpl list) {
-		if(list.head != null) {
-			
+		if (list.head != null) {
+
 			Node newNode = new Node(data);
 			newNode.next = head;
 			head = newNode;
 		}
 	}
-	
+
 	public void insertEnd(int data, SinglyLinkedListImpl list) {
-		if(list.head != null) {
+		if (list.head != null) {
 			Node newNode = new Node(data);
 			Node current = list.head;
 			while (current.next != null) {
@@ -63,34 +61,37 @@ public class SinglyLinkedListImpl {
 
 	public void insertBetweenInTheList(int data, int position, SinglyLinkedListImpl list) {
 		Node newNode = new Node(data);
-		if(list.head != null) {
-			int ctr=1;
-			Node current = list.head;
-			while(current.next != null) {
-				ctr++;
-				if(ctr == position) {
-					break;
+		if (list.head != null) {
+			if (position == 1) {
+				newNode.next = head;
+				head = newNode;
+			} else {
+				int ctr = 1;
+				Node current = list.head;
+				while (current.next != null) {
+					ctr++;
+					if (ctr == position) {
+						break;
+					}
+					current = current.next;
 				}
-				current = current.next;
+				newNode.next = current.next;
+				current.next = newNode;
 			}
-			newNode.next = current.next;
-			current.next = newNode;
-			
+
 		}
 	}
+
 	/**
 	 * 
-	 * delete beginning
-	 * delete end
-	 * delete between
-	 * reverse list 
+	 * delete beginning delete end delete between reverse list
 	 * 
 	 */
-	
+
 	public static void main(String[] args) {
 
 		SinglyLinkedListImpl list = new SinglyLinkedListImpl();
-		for(int i=1;i<=10;i++) {
+		for (int i = 1; i <= 10; i++) {
 			list.createList(i, list);
 		}
 		list.displayList(list);
@@ -101,7 +102,7 @@ public class SinglyLinkedListImpl {
 		list.insertEnd(12, list);
 		list.displayList(list);
 		System.out.println("insert between of the list");
-		list.insertBetweenInTheList(13, 3, list);
+		list.insertBetweenInTheList(13, 1, list);
 		list.displayList(list);
 	}
 
