@@ -87,6 +87,24 @@ public class SinglyLinkedListImpl {
 	 * delete beginning delete end delete between reverse list
 	 * 
 	 */
+	
+	public void reverseList(SinglyLinkedListImpl list) {
+		 Node prev = null;
+	        Node current = head;
+	        Node next = null;
+	        while (current != null) {
+	            next = current.next;
+	            current.next = prev;
+	            prev = current;
+	            current = next;
+	        }
+	        if(prev != null) {
+	        	
+	        }
+	        head = prev;
+	        
+	        displayList(list);
+	}
 
 	public static void main(String[] args) {
 
@@ -104,6 +122,9 @@ public class SinglyLinkedListImpl {
 		System.out.println("insert between of the list");
 		list.insertBetweenInTheList(13, 1, list);
 		list.displayList(list);
+		System.out.println("reverse of the list");
+		
+		list.reverseList(list);
 	}
 
 }
