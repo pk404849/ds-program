@@ -13,13 +13,13 @@ public class SinglyLinkedListImpl {
 		}
 	}
 
-	public void createList(int data, SinglyLinkedListImpl list) {
+	public void createList(int data) {
 
 		Node newNode = new Node(data);
 		if (head == null) {
 			head = newNode;
 		} else {
-			Node current = list.head;
+			Node current = head;
 			while (current.next != null) {
 				current = current.next;
 			}
@@ -27,9 +27,9 @@ public class SinglyLinkedListImpl {
 		}
 	}
 
-	public void displayList(SinglyLinkedListImpl list) {
-		if (list.head != null) {
-			Node current = list.head;
+	public void displayList() {
+		if (head != null) {
+			Node current = head;
 
 			while (current != null) {
 				System.out.print(current.data + " ");
@@ -39,19 +39,18 @@ public class SinglyLinkedListImpl {
 		}
 	}
 
-	public void insertBeginning(int data, SinglyLinkedListImpl list) {
-		if (list.head != null) {
-
+	public void insertBeginning(int data) {
+		if (head != null) {
 			Node newNode = new Node(data);
 			newNode.next = head;
 			head = newNode;
 		}
 	}
 
-	public void insertEnd(int data, SinglyLinkedListImpl list) {
-		if (list.head != null) {
+	public void insertEnd(int data) {
+		if (head != null) {
 			Node newNode = new Node(data);
-			Node current = list.head;
+			Node current = head;
 			while (current.next != null) {
 				current = current.next;
 			}
@@ -59,15 +58,15 @@ public class SinglyLinkedListImpl {
 		}
 	}
 
-	public void insertBetweenInTheList(int data, int position, SinglyLinkedListImpl list) {
+	public void insertBetweenInTheList(int data, int position) {
 		Node newNode = new Node(data);
-		if (list.head != null) {
+		if (head != null) {
 			if (position == 1) {
 				newNode.next = head;
 				head = newNode;
 			} else {
 				int ctr = 1;
-				Node current = list.head;
+				Node current = head;
 				while (current.next != null) {
 					ctr++;
 					if (ctr == position) {
@@ -78,7 +77,6 @@ public class SinglyLinkedListImpl {
 				newNode.next = current.next;
 				current.next = newNode;
 			}
-
 		}
 	}
 
@@ -88,7 +86,7 @@ public class SinglyLinkedListImpl {
 	 * 
 	 */
 	
-	public void reverseList(SinglyLinkedListImpl list) {
+	public void reverseList() {
 		 Node prev = null;
 	        Node current = head;
 	        Node next = null;
@@ -103,28 +101,27 @@ public class SinglyLinkedListImpl {
 	        }
 	        head = prev;
 	        
-	        displayList(list);
+	        displayList();
 	}
 
 	public static void main(String[] args) {
 
 		SinglyLinkedListImpl list = new SinglyLinkedListImpl();
 		for (int i = 1; i <= 10; i++) {
-			list.createList(i, list);
+			list.createList(i);
 		}
-		list.displayList(list);
+		list.displayList();
 		System.out.println("insert beginning of the list");
-		list.insertBeginning(11, list);
-		list.displayList(list);
+		list.insertBeginning(1 );
+		list.displayList();
 		System.out.println("insert end of the list");
-		list.insertEnd(12, list);
-		list.displayList(list);
+		list.insertEnd(12);
+		list.displayList();
 		System.out.println("insert between of the list");
-		list.insertBetweenInTheList(13, 1, list);
-		list.displayList(list);
+		list.insertBetweenInTheList(13, 1);
+		list.displayList();
 		System.out.println("reverse of the list");
-		
-		list.reverseList(list);
+		list.reverseList();
 	}
 
 }
