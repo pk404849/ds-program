@@ -91,38 +91,38 @@ public class SinglyLinkedListImpl {
 	 * delete beginning delete end delete between reverse list
 	 * 
 	 */
-	
+
 	public void reverseList() {
-		 Node prev = null;
-	        Node current = head;
-	        Node next = null;
-	        while (current != null) {
-	            next = current.next;
-	            current.next = prev;
-	            prev = current;
-	            current = next;
-	        }
-	        if(prev != null) {
-	        	
-	        }
-	        head = prev;
-	        
-	        displayList();
+		Node prev = null;
+		Node current = head;
+		Node next = null;
+		while (current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		if (prev != null) {
+
+		}
+		head = prev;
+
+		displayList();
 	}
-	
+
 	public void deleteBeginningOfTheList() {
-		if(head != null) {
+		if (head != null) {
 			head = head.next;
 		}
 	}
-	
- //1 2 3 4 5 6  
+
+	// 1 2 3 4 5 6
 // 1 2 3 4 5	
-	
+
 	public void delteLastOfTheList() {
-		if(head != null) {
+		if (head != null) {
 			Node current = head;
-			while(current.next.next != null) {
+			while (current.next.next != null) {
 				current = current.next;
 			}
 			current.next = null;
@@ -130,65 +130,84 @@ public class SinglyLinkedListImpl {
 	}
 
 	public void removeDuplicate() {
-		int arr[]= {1,3,2,3,1,5,4,3};
-		
+		int arr[] = { 1, 3, 2, 3, 1, 5, 4, 3 };
+
 		List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
 		List<Integer> uniqueList = list.stream().distinct().collect(Collectors.toList());
 		System.out.println(uniqueList);
-		
-		Map<Integer, Long> map = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-		//find first non repeated element
-		Integer integer = map.entrySet().stream().filter(f->f.getValue()==1L).map(m->m.getKey()).findFirst().get();
-		System.out.println("first non repeated : "+integer);
+		Map<Integer, Long> map = list.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+		// find first non repeated element
+		Integer integer = map.entrySet().stream().filter(f -> f.getValue() == 1L).map(m -> m.getKey()).findFirst()
+				.get();
+		System.out.println("first non repeated : " + integer);
 		System.out.println(map);
 		System.out.println(map.keySet());
-		
-		String str="princepri";
+
+		String str = "princepri";
 		List<String> l2 = Arrays.asList(str.split(""));
-		Map<String, Long> stringMap = l2.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		System.out.println("string map : "+stringMap);
-		String string = stringMap.entrySet().stream().filter(f->f.getValue()==1L).map(m->m.getKey()).findFirst().get();
-		System.out.println("string : "+string);
+		Map<String, Long> stringMap = l2.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		System.out.println("string map : " + stringMap);
+		String string = stringMap.entrySet().stream().filter(f -> f.getValue() == 1L).map(m -> m.getKey()).findFirst()
+				.get();
+		System.out.println("string : " + string);
 	}
 	// 1 2 3 4 c1
-	// 1 2 5 4 c2 
-	
+	// 1 2 5 4 c2
+
 	public void identicalList(SinglyLinkedListImpl list1, SinglyLinkedListImpl list2) {
-		if(list1.head != null && list2.head != null) {
+		if (list1.head != null && list2.head != null) {
 			Node c1 = list1.head;
 			Node c2 = list2.head;
-			
-			while(c1 != null && c2 != null) {
-				if(c1.data != c2.data) {
+
+			while (c1 != null && c2 != null) {
+				if (c1.data != c2.data) {
 					break;
 				}
-				c1= c1.next;
-				c2=c2.next;
+				c1 = c1.next;
+				c2 = c2.next;
 			}
-			
-			if(c1 == null && c2 == null) {
+
+			if (c1 == null && c2 == null) {
 				System.out.println("both list is identical");
-			}else {
+			} else {
 				System.out.println("both list is not identical");
 			}
 		}
 	}
+
+	public void makeMidleNodeHeadInTheList() {
+		Node c1 = head;
+		Node c2 = head;
+		Node prev = null;
+		while (c2 != null && c2.next != null) {
+			prev = c1;
+			c2 = c2.next.next;
+			c1 = c1.next;
+		}
+		prev.next = prev.next.next;
+		c1.next = head;
+		head = c1;
+	}
+
 	public static void main(String[] args) {
 
 		SinglyLinkedListImpl list = new SinglyLinkedListImpl();
 		SinglyLinkedListImpl list1 = new SinglyLinkedListImpl();
 		for (int i = 1; i <= 10; i++) {
-			if(i==5) {
+			if (i == 5) {
 				list.createList(100);
-			}else {
+			} else {
 				list.createList(i);
 			}
 			list1.createList(i);
 		}
 		list.displayList();
 		list1.displayList();
-		list1.identicalList(list, list1);;
+		list1.identicalList(list, list1);
 		System.out.println("insert beginning of the list");
 		list.insertBeginning(11);
 		list.displayList();
@@ -207,7 +226,10 @@ public class SinglyLinkedListImpl {
 		list.delteLastOfTheList();
 		list.displayList();
 		System.out.println("=========================");
-		list.removeDuplicate();
+		// list.removeDuplicate();
+		System.out.println("make middle node head in ths list");
+		list.makeMidleNodeHeadInTheList();
+		list.displayList();
 	}
 
 }
