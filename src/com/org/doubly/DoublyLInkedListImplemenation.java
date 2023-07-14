@@ -79,6 +79,13 @@ public class DoublyLInkedListImplemenation {
 			newNode.prev = current;
 			current.next = newNode;
 	}
+	
+	public void deleteBeginningOfThedoublyList() {
+		if(head != null) {
+			head = head.next;
+			head.prev = null;
+		}
+	}
 	public static void main(String[] args) {
 
 		DoublyLInkedListImplemenation list = new DoublyLInkedListImplemenation();
@@ -95,6 +102,9 @@ public class DoublyLInkedListImplemenation {
 		list.displayDoublyList();
 		System.out.println("insert between of the list");
 		list.insertBetweenOfTheList(13, 2);
+		list.displayDoublyList();
+		System.out.println("delete beginning of the list");
+		list.deleteBeginningOfThedoublyList();
 		list.displayDoublyList();
 	}
 
