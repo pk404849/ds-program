@@ -1,6 +1,6 @@
-package com.org.doubly.leetcode;
+package com.org.leetcode;
 
-public class FindMiddleInTheList {
+public class ReverseLinkedList {
 	Node head;
 
 	class Node {
@@ -35,30 +35,34 @@ public class FindMiddleInTheList {
 			System.out.println();
 		}
 	}
-
-	public int findMiddleElementInTheList() {
-
-		if (head != null) {
-			Node slow = head;
-			Node fast = head;
-			while (fast != null && fast.next != null) {
-				slow = slow.next;
-				fast = fast.next.next;
+	
+	public void reverseLinkedList() {
+		if(head != null) {
+			Node current = head;
+			Node next = null;
+			Node prev = null;
+			while(current != null) {
+				next = current.next;
+				current.next = prev;
+				prev = current;
+				current = next;
 			}
-			return slow.data;
+			if(prev != null) {
+				head = prev;
+			}
 		}
-		return 0;
 	}
-
 	public static void main(String[] args) {
 
-		FindMiddleInTheList list = new FindMiddleInTheList();
-		for (int i = 1; i <= 13; i++) {
+		ReverseLinkedList list = new ReverseLinkedList();
+		
+		for(int i=1;i<=10;i++) {
 			list.createList(i);
 		}
 		list.displayList();
-
-		System.out.println("Middle element of the list : " + list.findMiddleElementInTheList());
+		System.out.println("reverse of the list");
+		list.reverseLinkedList();
+		list.displayList();
 	}
 
 }

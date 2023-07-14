@@ -1,4 +1,4 @@
-package com.org.doubly.leetcode;
+package com.org.leetcode;
 
 public class ConvertBinaryNumberInLinkedListToInteger {
 
