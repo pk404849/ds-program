@@ -86,6 +86,22 @@ public class DoublyLInkedListImplemenation {
 			head.prev = null;
 		}
 	}
+	
+	public  void reverseDoublyLinkedlist() {
+		if(head != null) {
+			Node current = head;
+			Node temp = null;
+			while(current != null) {
+				temp = current.prev;
+				current.prev = current.next;
+				current.next = temp;
+				current = current.prev;
+			}
+			if(temp != null) {
+				head = temp.prev;
+			}
+		}
+	}
 	public static void main(String[] args) {
 
 		DoublyLInkedListImplemenation list = new DoublyLInkedListImplemenation();
@@ -105,6 +121,9 @@ public class DoublyLInkedListImplemenation {
 		list.displayDoublyList();
 		System.out.println("delete beginning of the list");
 		list.deleteBeginningOfThedoublyList();
+		list.displayDoublyList();
+		System.out.println("reverse of the doubly linked list");
+		list.reverseDoublyLinkedlist();
 		list.displayDoublyList();
 	}
 
