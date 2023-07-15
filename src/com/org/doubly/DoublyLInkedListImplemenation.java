@@ -83,7 +83,37 @@ public class DoublyLInkedListImplemenation {
 	public void deleteBeginningOfThedoublyList() {
 		if(head != null) {
 			head = head.next;
+			head.prev.next=null;
 			head.prev = null;
+		}
+	}
+	
+	public void deleteEndOfTheDoublyList() {
+		if(head != null) {
+			Node current = head;
+			while(current.next.next != null) {
+				current = current.next;
+			}
+			current.next.prev = null;
+			current.next = null;
+		}
+	}
+	//1 2 3 4 5
+	public void deleteBetweenOfTheDoublyList(int position) {
+		if(head != null) {
+			Node current = head;
+			int counter =1;
+			while(current != null) {
+				counter++;
+				if(counter == position) {
+					break;
+				}
+				current = current.next;
+			}
+			current.next = current.next.next;
+			current.next.prev.prev = null;
+			current.next.prev.next = null;
+			current.next.prev = current;
 		}
 	}
 	
@@ -124,6 +154,12 @@ public class DoublyLInkedListImplemenation {
 		list.displayDoublyList();
 		System.out.println("reverse of the doubly linked list");
 		list.reverseDoublyLinkedlist();
+		list.displayDoublyList();
+		System.out.println("delete end of the doubly linked list");
+		list.deleteEndOfTheDoublyList();
+		list.displayDoublyList();
+		System.out.println("delete node between of the list");
+		list.deleteBetweenOfTheDoublyList(3);
 		list.displayDoublyList();
 	}
 
