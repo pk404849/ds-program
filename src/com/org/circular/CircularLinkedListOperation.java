@@ -48,6 +48,25 @@ public class CircularLinkedListOperation {
 			current.next = head;
 		}
 	}
+// 1->200	
+	
+	public void reverseCircularLinkedList() {
+		if(head != null) {
+			Node current = head;
+			Node prev = null;
+			Node next = null;
+			do {
+				next = current.next;
+				current.next=prev;
+				prev = current;
+				current = next;
+			}while(current != head);
+			if(prev !=null) {
+				head = prev;
+			}
+			current.next = head;
+		}
+	}
 	public static void main(String[] args) {
 		
 		CircularLinkedListOperation list = new CircularLinkedListOperation();
@@ -57,6 +76,9 @@ public class CircularLinkedListOperation {
 		list.displayCircularList();
 		System.out.println("insert beginning of the list");
 		list.insertBeginningOfTheCircularList(11);
+		list.displayCircularList();
+		System.out.println("reverse of the circular list");
+		list.reverseCircularLinkedList();
 		list.displayCircularList();
 	}
 
