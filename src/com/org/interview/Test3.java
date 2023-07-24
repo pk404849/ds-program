@@ -1,25 +1,35 @@
 package com.org.interview;
 
-class Parent {
-	public static void method1() {
-		System.out.println("parent");
-	}
-}
-
-class Child extends Parent {
-	public static void method1() {
-		System.out.println("child");
-	}
-}
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Test3 {
 
 	public static void main(String[] args) {
 
-		Parent p = new Parent();
-		p.method1();// parent
-		Parent p1 = new Child();
-		p1.method1();//error(X) //Parent
+		Map<String, Integer> map = new HashMap<>();
+		map.put("prince",101);
+		map.put("akash",102);
+		map.put("rajesh",105);
+		map.put("suresh",103);
+		map.put("pankaj", 106);
+		map.put("rakesh", 104);
+		map.put("dnkit", 107);
+		
+		System.out.println(map);
+		
+		Map<String, Integer> sortedMap = map.entrySet().stream().sorted((o1,o2)->o1.getValue()<o2.getValue() ?1 :
+			o1.getValue()>o2.getValue() ?-1:0)
+		.collect(Collectors.toMap(k->k.getKey(), v->v.getValue()));
+		System.out.println(sortedMap);
+		List<Entry<String,Integer>> collect = map.entrySet().stream().sorted((o1,o2)->o1.getValue()<o2.getValue() ?1 :
+			o1.getValue()>o2.getValue() ?-1:0)
+		.collect(Collectors.toList());
+		System.out.println(collect);
+		
 	}
 
 }
