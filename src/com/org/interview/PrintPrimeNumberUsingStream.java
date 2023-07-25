@@ -7,9 +7,9 @@ import java.util.stream.IntStream;
 public class PrintPrimeNumberUsingStream {
 
 	//generate prime number till the give number
-	public static List<Integer> printPrimeNumber(int number){
+	public static List<Integer> printPrimeNumber(int number, int number2){
 		
-		return IntStream.range(2, number)
+		return IntStream.range(number,number2)
 				.filter(f->isPrime(f)).boxed().collect(Collectors.toList());
 	}
 	
@@ -27,7 +27,7 @@ public class PrintPrimeNumberUsingStream {
 //		}else {
 //			System.out.println("not prime number");
 //		}
-		System.out.println(printPrimeNumber(100));
+		System.out.println(printPrimeNumber(100,200));
 	}
 
 }
