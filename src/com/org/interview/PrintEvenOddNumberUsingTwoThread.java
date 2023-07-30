@@ -29,9 +29,9 @@ public class PrintEvenOddNumberUsingTwoThread {
 		MyThreadOne t1 = new MyThreadOne();
 		MyThreadTwo t2 = new MyThreadTwo();
 		t1.start();
-		t2.start();
 		//t1.join();
-		//t2.join();
+		t2.start();
+		t2.join();
 	}
 
 }
