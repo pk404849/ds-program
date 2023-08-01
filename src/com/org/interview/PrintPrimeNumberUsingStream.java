@@ -21,12 +21,12 @@ public class PrintPrimeNumberUsingStream {
 	
 	public static void main(String[] args) {
 
-//		boolean isPrime = isPrime(9);
-//		if(isPrime) {
-//			System.out.println("prime number");
-//		}else {
-//			System.out.println("not prime number");
-//		}
+		boolean isPrime = isPrime(13);
+		if(isPrime) {
+			System.out.println("prime number");
+		}else {
+			System.out.println("not prime number");
+		}
 		System.out.println(printPrimeNumber(100,200));
 	}
 

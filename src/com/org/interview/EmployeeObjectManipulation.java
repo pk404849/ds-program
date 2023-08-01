@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class EmployeeObjectManipulation {
@@ -14,13 +15,24 @@ public class EmployeeObjectManipulation {
 	     emplist.add(new EmployeeObj(107, "sharwan", 30, 18000, "male", 7));
 	     emplist.add(new EmployeeObj(102, "balak", 32, 17000, "male", 3));
 	     emplist.add(new EmployeeObj(101, "kumar", 20, 28000, "male", 5));
-	     emplist.add(new EmployeeObj(111, "prince", 32, 26000, "male", 8));
+	     emplist.add(new EmployeeObj(111, "prince", 32, 26000, "female", 8));
 	     emplist.add(new EmployeeObj(107, "shyam", 33, 15000, "male", 5));
 	     emplist.add(new EmployeeObj(110, "aman", 24, 12000, "male", 7));
 	     emplist.add(new EmployeeObj(103, "sakshi", 21, 19000, "female", 4));
 	     emplist.add(new EmployeeObj(107, "kumar", 33, 16000, "male", 6));
 	     emplist.add(new EmployeeObj(109, "kumar", 34, 24000, "male", 3));
+	     System.out.println("============ convert employee object into map ==================");
+	     Map<Integer, List<EmployeeObj>> mapSalary = emplist.stream().collect(Collectors.groupingBy(e->e.getSalary()));
+	     System.out.println(mapSalary);
+	     emplist.forEach(System.out::println);
+	     System.out.println("========count of gender ===========");
+	     Map<String, Long> countOfGender = emplist.stream().collect(Collectors.groupingBy(e->e.getGender(), Collectors.counting()));
+	     System.out.println(countOfGender);
+	     System.out.println("============ print only male employee=============");
+	     Map<String, List<EmployeeObj>> map = emplist.stream().collect(Collectors.groupingBy(e1->e1.getGender()));
+	     System.out.println(map);
 	     //print the employee details whose salary is greater than 20000
+	     System.out.println("==========print the employee details whose salary is greater than 20000===========");
 	     List<EmployeeObj> salaryGreater20k = emplist.stream().filter(e->e.getSalary()>20000).collect(Collectors.toList());
 		 System.out.println(salaryGreater20k);
 		 System.out.println("-------------------------------------------------------");
@@ -40,6 +52,9 @@ public class EmployeeObjectManipulation {
 		countBasedOnDeptId.entrySet().forEach(d->{
 			System.out.println(d.getKey()+"----> "+d.getValue());
 		});
+		System.out.println("========genderCountWithDepartment==========");
+		Map<String, Long> genderCountWithDepartment = emplist.stream().collect(Collectors.groupingBy(e3->e3.getGender() +" : "+e3.getDeptId(), Collectors.counting()));
+		System.out.println(genderCountWithDepartment);
 		}
 
 }
