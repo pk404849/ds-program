@@ -2,7 +2,9 @@ package com.org.interview;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Test6 {
@@ -20,6 +22,7 @@ public class Test6 {
 		List<Integer> sortedListAsc = list.stream().sorted((o1, o2) -> o1 < o2 ? -1 : o1 > 2 ? 1 : 0)
 				.collect(Collectors.toList());
 		System.out.println(sortedListAsc);
+
 	}
 
 }
