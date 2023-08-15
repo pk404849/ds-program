@@ -2,8 +2,9 @@ package com.org.stack;
 
 import java.util.Stack;
 
-public class InfixToPostfix {
-	public static int checkOperatorPrecedence(char ch) {
+public class InfixToPostfixExample {
+
+	public static int operatorPriority(char ch) {
 		switch (ch) {
 		case '+':
 		case '-':
@@ -17,43 +18,42 @@ public class InfixToPostfix {
 		return -1;
 	}
 
-	public static String infixToPostfix(String exp) {
-		// String exp = "A*B-(C+D)+E";
-		String postfixExpression = "";
+	public static String infixToPostfixConversion(String infixExp) {
+		String result = "";
 		Stack<Character> stack = new Stack<>();
-		for (int i = 0; i < exp.length(); i++) {
-			char ch = exp.charAt(i);
+		for (int i = 0; i < infixExp.length(); i++) {
+			char ch = infixExp.charAt(i);
 			if (Character.isLetterOrDigit(ch)) {
-				postfixExpression = postfixExpression + ch;
+				result = result + ch;
 			} else if (ch == '(') {
 				stack.push(ch);
 			} else if (ch == ')') {
 				while (!stack.isEmpty() && stack.peek() != '(') {
-					postfixExpression = postfixExpression + stack.peek();
+					result = result + stack.peek();
 					stack.pop();
 				}
 				stack.pop();
 			} else {
-				while (!stack.isEmpty() && checkOperatorPrecedence(ch) <= checkOperatorPrecedence(stack.peek())) {
-					postfixExpression = postfixExpression + stack.peek();
+				while (!stack.isEmpty() && operatorPriority(ch) <= operatorPriority(stack.peek())) {
+					result = result + stack.peek();
 					stack.pop();
 				}
 				stack.push(ch);
 			}
 		}
 		while (!stack.isEmpty()) {
-			postfixExpression = postfixExpression + stack.peek();
+			result = result + stack.peek();
 			stack.pop();
 		}
-		return postfixExpression;
-
+		return result;
 	}
 
 	public static void main(String[] args) {
+
 		String exp[] = { "A*B-(C+D)+E", "((A+B)-C*(D/E))+F", "(A+B)*C-(D-E)*(F+G)", "(((A+B)*C)-((D-E)*(F+G)))",
 				"A+B*C/D-F+A^E" };
 		for (int i = 0; i < exp.length; i++) {
-			System.out.println(infixToPostfix(exp[i]));
+			System.out.println(infixToPostfixConversion(exp[i]));
 		}
 	}
 

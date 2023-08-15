@@ -45,7 +45,6 @@ public class PrintEvenOddNumberUsingThread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 
@@ -58,7 +57,6 @@ public class PrintEvenOddNumberUsingThread {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 		t1.start();
