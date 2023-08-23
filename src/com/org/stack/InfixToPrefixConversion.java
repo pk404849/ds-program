@@ -20,7 +20,6 @@ public class InfixToPrefixConversion {
 	}
 
 	public static String infixToPrefixConversion(String string) {
-		// E+)D+C(-B*A
 		String result = "";
 		Stack<Character> stack = new Stack<>();
 		for (int i = 0; i < string.length(); i++) {
@@ -47,11 +46,10 @@ public class InfixToPrefixConversion {
 			result = result + stack.peek();
 			stack.pop();
 		}
-		//System.out.println("result = "+result);
-		return reverseString(result);
+		return result;
 	}
 
-	public static String reverseString(String str) {
+	public static String reverseExpression(String str) {
 
 		char[] charArray = str.toCharArray();
 		int length = charArray.length;
@@ -67,11 +65,13 @@ public class InfixToPrefixConversion {
 	public static void main(String[] args) {
 		String exp[] = { "A*B-(C+D)+E","x+y*z/w+u", "((A+B)-C*(D/E))+F", "(A+B)*C-(D-E)*(F+G)", "(((A+B)*C)-((D-E)*(F+G)))",
 				"A+B*C/D-F+A^E","K+L-M*N+(O^P)*W/U/V*T+Q" };
-		//++x/*yzwu
 		for (int i = 0; i < exp.length; i++) {
-			String reverseString = reverseString(exp[i]);
-			System.out.println("Original String : " + exp[i]);
-			System.out.println("Infix to prefix conversion : "+infixToPrefixConversion(reverseString));
+			String reverseInfixExp = reverseExpression(exp[i]);
+			System.out.println("Infix expression  : " + exp[i]);
+			String resultInfixExp = infixToPrefixConversion(reverseInfixExp);
+			String originInfixExp = reverseExpression(resultInfixExp);
+			System.out.println("Prefix expression : "+originInfixExp);
+			System.out.println("====================================================");
 		}
 
 	}
