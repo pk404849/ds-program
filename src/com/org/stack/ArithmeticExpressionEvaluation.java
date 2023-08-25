@@ -90,6 +90,8 @@ public class ArithmeticExpressionEvaluation {
 		System.out.println("First changes by balak.");
 		System.out.println("Second changes by balak");
 		System.out.println("Third changes by balak.");
+		System.out.println("first changes by prince");
+		System.out.println("second chenage by prince");
 		System.out.println("Infix Expression   : " + infixExpression);
 		String postfixExpression = infixToPostfixExpression(infixExpression);
 		System.out.println("Postfix Expression : " + infixToPostfixExpression(postfixExpression));
