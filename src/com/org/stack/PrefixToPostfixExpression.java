@@ -4,10 +4,6 @@ import java.util.Stack;
 
 public class PrefixToPostfixExpression {
 
-	public static boolean isOperand(char ch) {
-		return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
-	}
-
 	public static String prefixToInfixExpression(String prefixExpression) {
 		Stack<String> stack = new Stack<>();
 		int length = prefixExpression.length();
@@ -33,5 +29,4 @@ public class PrefixToPostfixExpression {
 		String postfixExpression = prefixToInfixExpression(prefixExpression);
 		System.out.println("Postfix Expression : " + postfixExpression);
 	}
-
 }
